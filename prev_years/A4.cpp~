@@ -1,0 +1,13 @@
+#include<iostream>
+
+struct _node {
+struct _node *L; /* Left child pointer */
+struct _node *R; /* Right child pointer */
+struct _node *P; /* Parent pointer */
+} treenode;
+
+using namespace std;
+
+void printtree(treenode head, int curr_level)
+{
+  
