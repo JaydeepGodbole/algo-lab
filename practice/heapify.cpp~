@@ -1,0 +1,68 @@
+#include<iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+void genarray(int * A, int n)
+{
+  // Generates an array of random integers and size n
+  A = new int[n];
+  for(int i = 0; i < n; i++)
+    {
+      A[i] = rand()%1000;
+    }
+  return;
+}
+
+void printarray(int * A, int n)
+{
+  for(int i = 0; i < n; i++)
+    {
+      cout << A[i] << "   " ;
+    }
+  cout << endl;
+}
+
+void heapify(int * A, int n, int i)
+{
+  if(n <= 0) return;
+  while (i<=n)
+    {
+      int L = 2*i; int R = 2*i + 1, m;
+      if(L > n) break;
+      if(L == n) m = L;
+      else m = (A[L] >= A[R])? L : R;
+      if(A[i] > A[m]) break;
+      else
+	{
+	  A[i] = A[i] + A[m];
+	  A[m] = A[i] - A[m];
+	  A[i] = A[i] - A[m];
+	}
+      i = m;
+    }
+  return;
+}
+
+void make_heap(int * A, int n)
+{
+  for(int i = n/2; i >= 0; i++)
+    {
+      heapify(A, n, i);
+    }
+  return;
+}
+
+int main()
+{
+  cout << "Enter the number of array elements";
+  int n;
+  cin >> n;
+  int * A;
+  genarray(A, n);
+  printarray(A, n);
+  make_heap(A, n);
+  printarray(A, n);
+
+  return 0;
+}

@@ -1,0 +1,34 @@
+#include<iostream>
+
+using namespace std;
+
+struct node
+{
+  int key;
+  node * left;
+  node * right;
+};
+
+//Insert function adds an integer key into an already formed BST 
+node * insert(node * T, int x)
+{
+  if(T == NULL)
+    {
+      T = new node;
+      T -> key = x;
+      T -> left = NULL;
+      T -> right = NULL;
+      return T;
+    }
+} 
+
+// Takes an array of size n as input and returns a BST out of it
+node * buildBST(int * A, int n)
+{
+  node * T;
+}
+
+int main()
+{
+  return 0;
+}
