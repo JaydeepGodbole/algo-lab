@@ -1,0 +1,91 @@
+#include<iostream>
+
+using namespace std;
+
+struct node
+{
+  int x;
+  node* next1;
+  node* next2;
+};
+
+node * createlist1(int n, int a)
+{
+  node * A;
+  node * temp;
+  for(int i = 0; i < n; i++)
+    {
+      temp = new node;
+      if(i == 0)
+	{
+	  A = temp;
+	}
+      temp -> x = i*a;
+      temp -> next2 = NULL;
+      temp -> next1 = NULL;
+      temp = temp -> next1;
+    }
+
+  return A;
+}
+
+node * createlist2(int n, int b, node * A, int a)
+{
+  cout << "entered2" << endl;
+  node * B;
+  node * list1 = A;
+  node * temp;
+  for(int i = 0; i < n; i++)
+    {
+      cout << i << endl;
+      while((list1->x % b != 0) || list1 != NULL)
+	{
+	  cout << endl;
+	  list1 = list1-> next1;
+	}
+      if(i*b % a == 0)
+	{
+	  temp = list1;
+	  temp = temp-> next2;
+	}
+      else
+	{
+	  temp = new node;
+	  temp -> x = i*b;
+	  temp -> next2 = NULL;
+	  temp = temp-> next2;
+	}
+    }
+
+  return B;
+}
+
+void prnlist(node * A, int x)
+{
+  while(A != NULL)
+    {
+      cout << A -> x << " ";
+      A = (x ==1)? A->next1 : A-> next2;
+    }
+  cout << endl;
+}
+
+
+int main()
+{
+  int n,a,b;
+  cout << "n = ";
+  cin >> n;
+  cout << "a = ";
+  cin >> a;
+  cout << "b = ";
+  cin >> b;
+  node * A = createlist1(n, a);
+  //node * B = createlist2(n, b, A, a);
+  prnlist(A, 1);
+  //  prnlist(B, 2);
+  //  prnboth(A, B);
+
+  return 0;
+}
+ 

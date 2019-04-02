@@ -1,0 +1,34 @@
+#include <iostream>
+#include <time.h>
+
+#define N 100000000
+
+using namespace std;
+
+extern void registerme ( );
+extern void startgame ( int );
+extern int guess ( int );
+extern void verifysoln ( int );
+
+int playgame0()
+{
+  int i = 0;
+  while(i <= N)
+    {
+      if(i == guess(i)) break;
+    }
+  return i;
+}
+
+int main()
+{
+  registerme();
+  startgame(1);
+  c1 = clock();
+  a = playgame1();
+  c2 = clock();
+  printf("\n+++ Game 1\n a1 = %d\n", a);
+  printf(" Time taken = %lf sec\n", (double)(c2-c1)/(double)CLOCKS_PER_SEC);
+  verifysoln(a);
+  return 0;
+}
